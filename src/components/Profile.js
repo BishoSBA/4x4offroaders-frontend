@@ -31,7 +31,28 @@ const Profile = ({ profile }) => {
 	}, [profile]);
 
 	if (!profile) return navigate("/login");
-	console.log(posts);
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		console.log(e.target.imageUpload.files[0]);
+
+		let response = await fetch(process.env.REACT_APP_SERVER_URL + "api/post/createPost", {
+			method: "POST",
+			headers: { "content-type": "application/json" },
+			body: JSON.stringify({
+				title: e.target.title.value,
+				caption: e.target.caption.value,
+			}),
+			file: e.target.imageUpload.files[0],
+		});
+		if (!(await response.json())) {
+			console.log("Create Post Error");
+			return navigate("/profile");
+		} else {
+			console.log("Post Added Successful");
+			return navigate("/profile");
+		}
+	};
 
 	// <% for(var i=0; i<posts.length; i++) {%>
 	//   <li className="col-6 justify-content-between mt-5">
@@ -82,7 +103,7 @@ const Profile = ({ profile }) => {
 								></textarea>
 							</div>
 							<div className="mb-3">
-								<label htmlFor="imgUpload" className="form-label">
+								<label htmlFor="imageUpload" className="form-label">
 									Image
 								</label>
 								<input
