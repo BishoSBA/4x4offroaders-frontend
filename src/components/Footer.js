@@ -7,13 +7,13 @@ const Footer = () => {
 			<div className="sm:flex sm:items-center sm:justify-between">
 				<Link to="/" className="flex items-center mb-4 sm:mb-0">
 					<img
-						src="https://flowbite.com/docs/images/logo.svg"
+						src="/assets/vector/default-monochrome-white.svg"
 						className="mr-3 h-8"
-						alt="Flowbite Logo"
+						alt="4x4offroaders Logo"
 					/>
-					<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+					{/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
 						4x4offroaders
-					</span>
+					</span> */}
 				</Link>
 				<ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
 					<li>

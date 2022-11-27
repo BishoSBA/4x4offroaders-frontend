@@ -23,7 +23,6 @@ const Login = ({ setProfile, profile }) => {
 			console.log("Auth Error");
 			return navigate("/login");
 		} else {
-			console.log(user.user);
 			setProfile(user.user);
 			return navigate("/");
 		}
@@ -107,7 +106,7 @@ const Login = ({ setProfile, profile }) => {
 				<div className="w-1/2 shadow-2xl">
 					<img
 						className="object-cover w-full h-screen hidden md:block"
-						src="https://source.unsplash.com/IXUM4cJynP0"
+						src="/assets/wallpaper3.jpg"
 						alt="img"
 					/>
 				</div>

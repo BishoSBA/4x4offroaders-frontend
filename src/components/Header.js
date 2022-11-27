@@ -9,7 +9,11 @@ const Header = ({ logOut, user }) => {
 		<div className="sticky top-0 navbar bg-gray-900 z-10">
 			<div className="flex-1">
 				<Link to="/" className="btn btn-ghost normal-case text-xl">
-					4x4Offroaders
+					<img
+						src="/assets/vector/default-monochrome-white.svg"
+						className="mr-3 h-10"
+						alt="4x4offroaders Logo"
+					/>
 				</Link>
 			</div>
 			<div className="flex-none">
