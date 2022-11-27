@@ -32,36 +32,6 @@ const Profile = ({ profile }) => {
 
 	if (!profile) return navigate("/login");
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		console.log(e.target.imageUpload.files[0]);
-
-		let response = await fetch(process.env.REACT_APP_SERVER_URL + "api/post/createPost", {
-			method: "POST",
-			headers: { "content-type": "application/json" },
-			body: JSON.stringify({
-				title: e.target.title.value,
-				caption: e.target.caption.value,
-			}),
-			file: e.target.imageUpload.files[0],
-		});
-		if (!(await response.json())) {
-			console.log("Create Post Error");
-			return navigate("/profile");
-		} else {
-			console.log("Post Added Successful");
-			return navigate("/profile");
-		}
-	};
-
-	// <% for(var i=0; i<posts.length; i++) {%>
-	//   <li className="col-6 justify-content-between mt-5">
-	//     <a href="/post/<%= posts[i]._id%>">
-	//       <img className="img-fluid" src="<%= posts[i].image%>">
-	//     </a>
-	//   </li>
-	// <% } %>
-
 	return (
 		<div className="container flex">
 			<div className="row mt-5 p-12">
