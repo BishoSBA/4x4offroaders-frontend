@@ -42,7 +42,7 @@ const Footer = () => {
 			<span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
 				© 2022{" "}
 				<a
-					href="https://github.com/BishoSBA/4x4offroaders"
+					href="https://github.com/BishoSBA/4x4offroaders-frontend"
 					target="_blank"
 					className="hover:underline"
 				>
