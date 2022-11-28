@@ -44,8 +44,8 @@ const Login = ({ setProfile, profile }) => {
 				{/* <!-- Login Section --> */}
 				<div className="w-full md:w-1/2 flex flex-col">
 					<div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-						<a href="#" className="bg-black text-white font-bold text-xl p-4">
-							4x4Logo
+						<a href="/" className="">
+							<img src="/assets/vector/default-monochrome.svg" className="w-80" />
 						</a>
 					</div>
 

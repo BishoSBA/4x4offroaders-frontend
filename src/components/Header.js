@@ -11,7 +11,7 @@ const Header = ({ logOut, user }) => {
 				<Link to="/" className="btn btn-ghost normal-case text-xl">
 					<img
 						src="/assets/vector/default-monochrome-white.svg"
-						className="mr-3 h-10"
+						className="mr-3 h-9"
 						alt="4x4offroaders Logo"
 					/>
 				</Link>
