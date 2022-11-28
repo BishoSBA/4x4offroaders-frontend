@@ -4,7 +4,7 @@ import Comment from "./Comment";
 
 const Post = ({ profile }) => {
 	const [post, setPost] = useState({});
-	// const [user, setUser] = useState({});
+	const [postUser, setPostUser] = useState({});
 	// const [comments, setComments] = useState([]);
 	const postId = useParams().id;
 
@@ -19,6 +19,7 @@ const Post = ({ profile }) => {
 				.then((response) => response.json())
 				.then((data) => {
 					setPost(data.post);
+					setPostUser(data.postUser);
 					// setComments(data.comments);
 				});
 		};
@@ -27,7 +28,7 @@ const Post = ({ profile }) => {
 
 	return (
 		<div className="place-self-center p-12 w-4/5 min-w-24">
-			<span>{post.user}</span>
+			<span>{postUser.username}</span>
 			<figure>
 				<img src={post.image} alt="img" />
 			</figure>
