@@ -33,73 +33,86 @@ const Profile = ({ profile }) => {
 	if (!profile) return navigate("/login");
 
 	return (
-		<div className="container flex">
-			<div className="row mt-5 p-12">
-				<div className="col-6">
-					<div>
-						<p>
-							<strong>User Name</strong>: {profile.username}
-						</p>
-						<p>
-							<strong>Email</strong>: {profile.email || "No Email"}
-						</p>
-					</div>
-					<div className="mt-12">
-						<h2 className="text-gray-900">Add a post</h2>
-						<form
-							action={process.env.REACT_APP_SERVER_URL + "api/post/createPost"}
-							encType="multipart/form-data"
-							method="POST"
-						>
-							<div className="mb-3">
-								<label htmlFor="title" className="form-label">
-									Title
-								</label>
-								<input
-									type="text"
-									className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-									id="title"
-									name="title"
-								/>
-							</div>
-							<div className="mb-3">
-								<label htmlFor="caption" className="form-label">
-									Caption
-								</label>
-								<textarea
-									className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-									id="caption"
-									name="caption"
-								></textarea>
-							</div>
-							<div className="mb-3">
-								<label htmlFor="imageUpload" className="form-label">
-									Image
-								</label>
-								<input
-									type="file"
-									className="form-control"
-									id="imageUpload"
-									name="file"
-								/>
-							</div>
-							<button
-								type="submit"
-								className="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
-								value="Upload"
-							>
-								Submit
-							</button>
-						</form>
-					</div>
+		<div className="p-12 gap-4 ">
+			<div className="flex flex-col items-center">
+				<div>
+					<img className="w-24 rounded-full" src="https://picsum.photos/300/300" />
+					<p className="text-center">
+						<strong>{profile.username}</strong>
+					</p>
 				</div>
-				<div className="col-6">
-					<ul className="row list-unstyled">{posts}</ul>
-					<div className="row justify-content-center mt-5">
-						<a className="btn btn-primary" href="/">
-							Return to Feed
-						</a>
-					</div>
+				<div className="mt-12">
+					<h2 className="text-gray-900 text-center pb-8 font-medium">Create a Post</h2>
+					<form
+						// action={process.env.REACT_APP_SERVER_URL + "api/post/createPost"}
+						encType="multipart/form-data"
+						method="POST"
+					>
+						<div className="relative z-0 mb-6 w-full group">
+							<input
+								type="text"
+								name="title"
+								id="title"
+								className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer "
+								placeholder=" "
+								required
+							/>
+							<label
+								htmlFor="title"
+								className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-lg"
+							>
+								Title
+							</label>
+						</div>
+						<div className="relative z-0 mb-6 w-full group">
+							<textarea
+								name="caption"
+								id="caption"
+								className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer "
+								placeholder=" "
+								rows="1"
+								required
+							></textarea>
+							<label
+								htmlFor="caption"
+								className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 text-lg"
+							>
+								Caption
+							</label>
+						</div>
+
+						<div className="mb-3">
+							<label
+								className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+								htmlFor="imageUpload"
+							>
+								Upload file
+							</label>
+							<input
+								className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+								aria-describedby="file_input_help"
+								id="imageUpload"
+								type="file"
+							/>
+							<p
+								className="mt-1 text-sm text-gray-500 dark:text-gray-500"
+								id="file_input_help"
+							>
+								SVG, PNG, JPG or GIF (MAX. 800x400px).
+							</p>
+						</div>
+						<button type="submit" className="btn btn-primary bg-violet-900">
+							Submit
+						</button>
+					</form>
+				</div>
+			</div>
+			<div className="flex flex-col items-center pt-12">
+				<ul className="row dark:text-gray-900">User's Posts</ul>
+				<div className="row justify-content-center mt-5">
+					<a className="btn btn-primary" href="/">
+						Return to Feed
+					</a>
 				</div>
 			</div>
 		</div>
