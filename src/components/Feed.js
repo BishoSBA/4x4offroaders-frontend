@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PostCard from "./PostCard";
+import Loading from "./Loading";
 
 const Feed = ({ profile }) => {
 	const [posts, setPosts] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -11,6 +13,7 @@ const Feed = ({ profile }) => {
 
 		// fetch the posts from the database
 		const getPosts = async () => {
+			setIsLoading(true);
 			fetch(process.env.REACT_APP_SERVER_URL + "api/feed")
 				.then((response) => response.json())
 				.then((data) => {
@@ -20,6 +23,7 @@ const Feed = ({ profile }) => {
 							return <PostCard key={post._id} post={post}></PostCard>;
 						})
 					);
+					setIsLoading(false);
 				});
 		};
 		getPosts();
@@ -28,7 +32,7 @@ const Feed = ({ profile }) => {
 	return (
 		<>
 			<div className="flex flex-wrap gap-12 p-12 rounded-lg bg-white justify-center">
-				{posts}
+				{isLoading ? Loading : posts}
 			</div>
 		</>
 	);
