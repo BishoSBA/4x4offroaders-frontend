@@ -7,35 +7,43 @@ const Login = ({ setProfile, profile }) => {
 		if (profile) return navigate("/");
 	});
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-
-		let response = await fetch(process.env.REACT_APP_SERVER_URL + "api/auth/login", {
+	const fetchLogin = (email, password) => {
+		fetch(process.env.REACT_APP_SERVER_URL + "api/auth/login", {
 			method: "POST",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
-				email: e.target.email.value,
-				password: e.target.password.value,
+				email: email,
+				password: password,
 			}),
-		});
-		let user = await response.json();
-		if (!user.success) {
-			console.log("Auth Error");
-			return navigate("/login");
-		} else {
-			setProfile(user.user);
-			return navigate("/");
-		}
+		})
+			.then((response) => response.json())
+			.then((user) => {
+				if (!user.success) {
+					console.log("Auth Error");
+					return navigate("/login");
+				} else {
+					setProfile(user.user);
+					return navigate("/");
+				}
+			});
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		fetchLogin(e.target.email.value, e.target.password.value);
 	};
 
 	const handleGoogleSignIn = (user) => {
 		window.open(process.env.REACT_APP_SERVER_URL + "api/auth/google", "_self");
+		// if (!user) {
+		// 	console.log("Google Auth Error");
+		// } else {
+		// 	console.log("Success");
+		// }
+	};
 
-		if (!user) {
-			console.log("Google Auth Error");
-		} else {
-			console.log("Success");
-		}
+	const demoLogin = () => {
+		fetchLogin("demo@demo.com", "12345678");
 	};
 
 	return (
@@ -90,6 +98,13 @@ const Login = ({ setProfile, profile }) => {
 						>
 							{" "}
 							Login with Google{" "}
+						</button>
+						<button
+							type="button"
+							onClick={demoLogin}
+							className="bg-gray-600 text-white font-bold text-lg hover:bg-gray-500 p-2 mt-6"
+						>
+							Demo Login
 						</button>
 						<div className="text-center py-4">
 							<p>

@@ -44,7 +44,7 @@ const Profile = ({ profile }) => {
 				<div className="mt-12">
 					<h2 className="text-gray-900 text-center pb-8 font-medium">Create a Post</h2>
 					<form
-						// action={process.env.REACT_APP_SERVER_URL + "api/post/createPost"}
+						action={process.env.REACT_APP_SERVER_URL + "api/post/createPost"}
 						encType="multipart/form-data"
 						method="POST"
 					>

@@ -12,7 +12,7 @@ import "./App.css";
 const Router = BrowserRouter;
 
 function App() {
-	const [profile, setProfile] = useState(null);
+	const [profile, setProfile] = useState();
 
 	useEffect(() => {
 		const getUser = async () => {
